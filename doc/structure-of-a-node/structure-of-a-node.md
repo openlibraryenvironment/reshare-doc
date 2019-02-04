@@ -52,6 +52,8 @@ Determining the identity of the patron will not always be trivial: for example, 
 
 Another wrinkle also comes into play: before a listener can call into mod-rs (or any Okapi-mediated service) it needs to know which tenant is hosting the ReShare modules. So the listener needs a way of figuring out "This OpenURL is from that source, which means its associated with tenant X". This, too, will likely be discernable only in ways that vary between discovery system and SSO solutions.
 
+Some informations suggests that is out of the remit of the Listeners to gather the patron information, and that a step beforehand should have collated this. If this is so, then we just need to agree how they will provide it to us. In practice, this would mean something like a discovery system extending its OpenURLs with new fields that identify the patron and the tenant. This would certainly make the last of the Listeners simpler, but it's not clear who will do this work or on what timescale.
+
 ### mod_directory
 
 This module will be a repository for all the information that mod-rs needs to do its job. This will include at least the following:
