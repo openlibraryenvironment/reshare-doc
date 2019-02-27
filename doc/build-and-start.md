@@ -10,7 +10,11 @@ This process runs in the foreground, to start another shell to register the modu
 	mod-rs$ cd okapi-scripts
 	okapi-scripts$ ./register_and_enable.sh
 
-The back-end module should now be running and available. Now you need to register the corresponding front-end module with Okapi, enable it for the `diku` tenant, and give the `diku_admin` user the necessary permission to access the UI module:
+Now load the sample records:
+
+	okapi-scripts$ ./load_test_data.sh
+
+The back-end module should now be running, available, and populated. Now you need to register the corresponding front-end module with Okapi, enable it for the `diku` tenant, and give the `diku_admin` user the necessary permission to access the UI module:
 
 	okapi-scripts$ cd ../../../ui/ui-rs
 	ui-rs$ stripes mod add
@@ -26,4 +30,12 @@ Now you can start Stripes:
 	platform-rs$ stripes serve stripes.config.js
 
 And go to http://localhost:3000 in your browser. You should see the "Resource Sharing" app in the list at the top of the page.
+
+
+## Appendix: building and running mod-directory
+
+The process is the same, except:
+* You run `gradlew` in the `service` subdirectory instead of at the top level
+* You run `register_and_enable.sh` in the `scripts` directory instead of `okapi-scripts`
+* The script to load data -- also in `scripts` -- is called `./load_palci.sh` instead of `load_test_data.sh`
 
