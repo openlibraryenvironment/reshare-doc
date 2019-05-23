@@ -1,13 +1,5 @@
 # Directory-entry propagation in ReShare
 
-<style>
-  h2 {
-    border-top: 1px solid lightgrey;
-    margin-top: 1.5em;
-    padding-top: 0.5em;
-  }
-</style>
-
 <!-- md2toc -l 2 directory-entry-propagation.md -->
 * [Introduction](#introduction)
 * [Principles](#principles)
