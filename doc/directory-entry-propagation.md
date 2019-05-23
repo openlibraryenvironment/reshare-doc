@@ -57,9 +57,9 @@ The best way to do this probably using public-key cryptography: the following sc
 
 2. Any node can create a directory-entry record. When it does so, it includes a unique directory-entry identifier, and reference to its own unique ID. The node is the _owner_ of that record.
 
-3. Any node can update any directory-entry record that it created. When it does so, the replacement record includes the directory entry's ID and a cryptographic hash of the replacement record signed with the owning node's private key.
+3. A node can update any directory-entry record that it created. When it does so, the replacement record includes the directory entry's ID and a cryptographic hash of the replacement record signed with the owning node's private key.
 
-4. When any node receives an updated directory-entry record from any other node, it will decrypt the replacement record using the public key of the owning node.
+4. When any node receives an updated directory-entry record from any other node, it will check the signature of the replacement record using the public key of the owning node.
 
 This should ensure that records can only be updated by the node that created them.
 
