@@ -42,7 +42,7 @@ The directory must be available to all nodes in a ReShare network, in a reasonab
 
 To do this, we need to draw a distinction between two kinds of record:
 
-* Directory-entry records are the information that makes up the actual directory, about entites of interest to the wider ReShare organisation: libraries, branches, etc.
+* Directory-entry records are the information that makes up the actual directory, about entities of interest to the wider ReShare organization: libraries, branches, etc.
 * Node records describe the nodes of the directory-propagation network, and are of interest only to the Directory system itself.
 
 
@@ -94,6 +94,6 @@ In any case, we will need to think how this ties in with the standard FOLIO-plat
 
 * Do we actually need node records as well as directory-entry records? Does it suffice for nodes to have an ID, and for directory-entry records to refer to that ID? If we did that, we would still need some way for a node receiving a directory-entry record to determine the public key of the node that owns it, so it can validate the authenticity of the update.
 
-* Is all this a solved problem? It feels like it mght be. Does a secure distributed propagation system already exist in an off-the-shelf form that we can use?
+* Is all this a solved problem? It feels like it might be. Does a secure distributed propagation system already exist in an off-the-shelf form that we can use?
 
 
