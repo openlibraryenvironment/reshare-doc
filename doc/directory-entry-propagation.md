@@ -10,6 +10,7 @@
 * [MVP solution](#mvp-solution)
     * [MVP Propagation](#mvp-propagation)
     * [MVP Security](#mvp-security)
+* [Open issues](#open-issues)
 
 
 ## Introduction
