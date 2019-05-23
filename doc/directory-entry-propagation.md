@@ -63,8 +63,6 @@ The best way to do this probably using public-key cryptography: the following sc
 
 This should ensure that records can only be updated by the node that created them.
 
-**XXX Have I missed any loopholes? Security is notoriously hard to get right, and I will feel happier when there have been more eyeballs on this.**
-
 
 ## MVP solution
 
@@ -84,6 +82,8 @@ In any case, we will need to think how this ties in with the standard FOLIO-plat
 
 
 ## Open issues
+
+* Is the proposed security solution actually secure? Have I missed any loopholes? Security is notoriously hard to get right, and I will feel happier when there have been more eyeballs on this.
 
 * Do we actually need node records as well as directory-entry records? Does it suffice for nodes to have an ID, and for directory-entry records to refer to that ID? If we did that, we would still need some way for a node receiving a directory-entry record to determine the public key of the node that owns it, so it can validate the authenticity of the update.
 
