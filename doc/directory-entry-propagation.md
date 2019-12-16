@@ -24,7 +24,7 @@ The directory must be available to all nodes in a ReShare network, in a reasonab
 
 * Each library (and branch, here and elsewhere) may belong to multiple consortia.
 * We want each library to be responsible for maintaining the information about itself and its branches.
-* We want changes made in the information about a library or its branches to propagate to all the members of that all library's consortia.
+* We want changes made in the information about a library or its branches to propagate to all the members of all that library's consortia.
 * We would like to avoid a single point of failure in the propagation mechanism.
 * Some information about library A may vary when viewed from the perspectives of libraries B and C: for example, A may charge more for a loan to B than it does to C.
 * We recognise that we are not likely to achieve the full generality of this solution in time for the MVP (Minimal Viable Product, "Inevitable Narwhal").
@@ -38,6 +38,8 @@ To do this, we need to draw a distinction between two kinds of record:
 * Directory-entry records are the information that makes up the actual directory, about entities of interest to the wider ReShare organization: libraries, branches, etc.
 * Node records describe the nodes of the directory-propagation network, and are of interest only to the Directory system itself.
 
+There is no one-to-one mapping between these two kinds of object, because a library may well run only a single ReShare node (which does directory-entry propagation) while being responsible for multiple directory entries for its multiple branches.
+
 
 ## Long-term solution
 
@@ -45,7 +47,7 @@ To do this, we need to draw a distinction between two kinds of record:
 
 We want a flexible and general approach to change propagation, in which new and modified directory-entry records can be sent from their originating node to any other nodes known to the originator, and passed on from there to more distant nodes. Such a mechanism _may_ benefit from a concept of "backbone nodes", or it may be simpler and more efficient just to treat the network as homogeneous.
 
-For this to work well, there will need to be a loop-avoidance mechanism: for example, node records could contain a "seen by nodes" list, and that list in the version of a node record that is passed on could be augmented with the identifier of the propagating node, so other nodes know not to send it back to any of those nodes on the list.
+For this to work well, there will need to be a loop-avoidance mechanism. For example, directory-entry records could contain a "seen by nodes" list: that list, in the version of a directory-entry record that is passed on, would be augmented with the identifier of the propagating node, so other nodes know not to send it back to any of those nodes on the list.
 
 ### Security
 
@@ -53,13 +55,13 @@ We will need to ensure that only the node that originated a directory-entry reco
 
 The best way to do this probably using public-key cryptography: the following scheme should give us what we need.
 
-1. Each node will publish a unique identifier and its public key in its own node record.
+1. Each node will publish, in its own node record, its unique identifier and its public key.
 
-2. Any node can create a directory-entry record. When it does so, it includes a unique directory-entry identifier, and reference to its own unique ID. The node is the _owner_ of that record.
+2. Any node can create a directory-entry record. When it does so, it includes a unique directory-entry identifier, and a reference to its own node ID. The node is then the _owner_ of that record.
 
-3. A node can update any directory-entry record that it created. When it does so, the replacement record includes the directory entry's ID and a cryptographic hash of the replacement record signed with the owning node's private key.
+3. A node can update any directory-entry record that it created. When it does so, the replacement record includes the directory entry's ID (so other nodes know which record to update) and a cryptographic hash of the replacement record signed with the owning node's private key.
 
-4. When any node receives an updated directory-entry record from any other node, it will check the signature of the replacement record using the public key of the owning node.
+4. When any node receives an updated directory-entry record from any other node, it will check the signature of the replacement record using the public key of the owning node. (Note that the node sending the replacement record may not be the owner node, as directory-entry records map propagate across multiple nodes.)
 
 This should ensure that records can only be updated by the node that created them.
 
@@ -88,5 +90,7 @@ In any case, we will need to think how this ties in with the standard FOLIO-plat
 * Do we actually need node records as well as directory-entry records? Does it suffice for nodes to have an ID, and for directory-entry records to refer to that ID? If we did that, we would still need some way for a node receiving a directory-entry record to determine the public key of the node that owns it, so it can validate the authenticity of the update.
 
 * Is all this a solved problem? It feels like it might be. Does a secure distributed propagation system already exist in an off-the-shelf form that we can use?
+
+* How can we deal with local additions to shared records ([PR-226](https://openlibraryenvironment.atlassian.net/browse/PR-226))? For example, Library A's directory entry for Library B may need to store the barcode of a local patron account used to check items out to Library B.
 
 
