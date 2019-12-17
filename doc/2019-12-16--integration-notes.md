@@ -57,7 +57,7 @@ Caveats:
 
 ### Server configuration
 
-* Since https://demo.reshare-dev.indexdata.com/ is the main system used in demonstrating ReShare, and the one that receives OpenURL requests from VuFind, we need to configure it to know where the shared index web-service it, and what credentials to use, so it can obtain bib records.
+* Since https://demo.reshare-dev.indexdata.com/ is the main system used in demonstrating ReShare, and the one that receives OpenURL requests from VuFind, we need to configure it to know where the shared index web-service it, and what credentials to use, so it can obtain bib records. **[DONE]**
 
 * We also need to set up NCIP configuration for that demo service, most likely to Millersville's NCIP service.
 
@@ -73,7 +73,7 @@ Caveats:
   * username -- there is no patron-request field for this, but can NCIP supply it?
   * email address -- there _is_ a patron-request field for this, but can NCIP supply it? If so, then we will need to rethink the rule that OpenURLs cannot be submitted unless the patron email address is explicitly specified.
 
-* The "Requesting user" card included an "ID" field. We should probably just display the patron reference there.
+* The "Requesting user" card includes an "ID" field. We should probably just display the patron reference there.
 
 
 
