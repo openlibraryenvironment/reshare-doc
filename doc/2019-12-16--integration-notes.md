@@ -28,7 +28,7 @@ We think that all of these will be running reasonably recent versions of the sof
 
 Item Identifiers (field `selectedItemBarcode`) are _not_ pulled in from the supplier ILS, since we don't want librarians to have to obtain a specific copy of a sought instance. Instead the barcode is supposedly pulled in by a check-in action in UI. (However, when I have tried this checkin process myself, the barcode does not seem to get added to the patron-request object.)
 
-Note that we do not obtain item-IDs via Z39.50, only locations and call-numbers. THerefore, Z39.50-server configutation of a ReShare node is irrelevant for the purpose of obtaining and displaying item IDs.
+Note that we do not obtain item-IDs via Z39.50, only locations and call-numbers. Therefore, Z39.50-server configutation of a ReShare node is irrelevant for the purpose of obtaining and displaying item IDs.
 
 
 ### Bibliographic records
