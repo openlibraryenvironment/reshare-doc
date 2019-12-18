@@ -1,8 +1,9 @@
 # Notes on ReShare Integrations
 
-<!-- md2toc -l 2 reshare-integration-thoughts.md -->
+<!-- md2toc -l 2 2019-12-16--integration-notes.md -->
 * [Different services](#different-services)
 * [Specific integrations](#specific-integrations)
+    * [Item identifiers](#item-identifiers)
     * [Bibliographic records](#bibliographic-records)
     * [Patron identification](#patron-identification)
 * [Action items](#action-items)
@@ -25,6 +26,9 @@ We think that all of these will be running reasonably recent versions of the sof
 
 
 ## Specific integrations
+
+
+### Item identifiers
 
 Item Identifiers (field `selectedItemBarcode`) are _not_ pulled in from the supplier ILS, since we don't want librarians to have to obtain a specific copy of a sought instance. Instead the barcode is supposedly pulled in by a check-in action in UI. (However, when I have tried this checkin process myself, the barcode does not seem to get added to the patron-request object.)
 
