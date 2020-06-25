@@ -32,7 +32,7 @@ It turns out that a "minimal" FOLIO platform to support these apps is pretty big
 * Password Validator Module (`mod-password-validator-1.4.1`) -- used by mod-users, I guess?
 * permissions (`mod-permissions-5.8.3`) -- part of the FOLIO platform
 * mod-rs (`mod-rs-1.9.0`) -- part of the FOLIO platform
-* Mod sender (`mod-sender-1.1.0`) **UNUSED?**
+* Mod sender (`mod-sender-1.1.0`) -- needed to send patron notices
 * Source Record Storage Module (`mod-source-record-storage-2.6.1`) **UNUSED?**
 * Tags (`mod-tags-0.5.0`) -- not clear if this used, or if mod-rs does its own tagging
 * Template engine module (`mod-template-engine-1.6.1`) -- needed for patron notices
@@ -40,7 +40,7 @@ It turns out that a "minimal" FOLIO platform to support these apps is pretty big
 * users business logic (`mod-users-bl-5.1.0`) -- part of the FOLIO platform, needed for login
 * Okapi (`okapi-2.32.0`) -- part of the FOLIO platform
 
-It seems that five of these modules are probably not used by ReShare (though this needs checking).
+It seems that four of these modules are probably not used by ReShare (though this needs checking).
 
 That's fewer than we expected, isn't it?
 
