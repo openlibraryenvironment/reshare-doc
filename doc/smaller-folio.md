@@ -15,7 +15,7 @@ It turns out that a "minimal" FOLIO platform to support these apps is pretty big
 * Developer settings (`folio_developer-1.10.1`)
 * Interact with the library services directory (`folio_directory-1.1.0`)
 * Top-level platform for ReShare UI (`folio_platform-rs-1.0.0`)
-* Request resources for ILL (`folio_request-1.0.0`) **UNUSED?**
+* Request resources for ILL (`folio_request-1.0.0`)
 * Stripes framework (`folio_stripes-3.1.2`)
 * Supply resources for ILL (`folio_supply-1.0.0`)
 * Quickly change the status of items. Part of the ReShare project. (`folio_update-1.0.0`)
@@ -40,7 +40,7 @@ It turns out that a "minimal" FOLIO platform to support these apps is pretty big
 * users business logic (`mod-users-bl-5.1.0`)
 * Okapi (`okapi-2.32.0`)
 
-It seems that seven of these modules are probably not used by ReShare (though this needs checking).
+It seems that six of these modules are probably not used by ReShare (though this needs checking).
 
 That's fewer than we expected, isn't it?
 
