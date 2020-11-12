@@ -261,3 +261,12 @@ sudo apt install -y libjson-perl libwww-perl libuuid-tiny-perl
 Download the boostrap-superuser.pl script:
 ```
 wget https://raw.githubusercontent.com/folio-org/folio-install/master/runbooks/single-server/scripts/bootstrap-superuser.pl
+```
+Run the script to add a superuser:
+```
+perl bootstrap-superuser.pl \
+  --tenant reshare --user reshare_admin \
+  --password admin --okapi http://localhost:9130
+```
+
+At this point, you should be able to log into your frontend with the credentials you provided.
