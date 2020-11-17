@@ -171,6 +171,12 @@ curl -w '\n' -D - -X POST -H "Content-type: application/json" \
   -d '{"id":"reshare","name":"ReShare","description":"ReShare Tenant"}' \
   http://localhost:9130/_/proxy/tenants
 ```
+Enable the Okapi module for the tenant
+```
+curl -w '\n' -D - -X POST -H "Content-type: application/json" \
+  -d '{"id":"okapi"}' \
+  http://localhost:9130/_/proxy/tenants/reshare/modules
+```
 
 ### Build the frontend bundle
 switch to node lts
