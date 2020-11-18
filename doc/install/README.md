@@ -1,6 +1,25 @@
 # ReShare Install, example guide
 This document describes an installation of a ReShare tenant from the ground up on a single Linux server (Ubuntu 20.04 in this case). Note that this is not a production install. A production install should likely make use of a container orchestration platform like Kubernetes.
 
+## Introduction
+Project ReShare is built on the [Okapi/Stripes](https://wiki.folio.org/display/TC/Definition+of+the+Okapi-Stripes+Platform%2C+FOLIO+LSP+Base+and+FOLIO+LSP+Extended+Apps) platform developed for the FOLIO Library Services Platform project. The main components  to a single ReShare tenant are a storage backend (Postgres), a message queue (Kafka), an application backend, and a web frontend javascript bundle.
+
+To better understand how ReShare is built, it would be useful to review the FOLIO developer's documentation available at https://dev.folio.org/start/. In particular, the [Okapi Guide](https://github.com/folio-org/okapi/blob/master/doc/guide.md) and [Stripes Guide](https://github.com/folio-org/stripes/blob/master/doc/dev-guide.md) are useful for showing how the platform fits together.
+
+### Backend software 
+There are two primary backend modules in project ReShare: mod-rs, and mod-directory. Project ReShare also makes use of a a suite of modules shared with the FOLIO project to provide functionality such as user login and permissions management.
+
+* [mod-rs](https://github.com/openlibraryenvironment/mod-rs) handles requests
+* [mod-directory]https://github.com/openlibraryenvironment/mod-directory) keeps track of the members of a resource sharing consortium.
+
+Releases of mod-rs and mod-directory are tagged in the github repositories above and published as Docker containers on the [reshareorg](https://hub.docker.com/u/reshareorg) dockerhub organization.
+
+### Frontend software
+ReShare's UI is built on the stripes platform and comprises the applications listed in the package.json file of the [platform-rs](https://github.com/openlibraryenvironment/platform-rs/blob/v1.0.0/package.json) repository. Code for the frontend applications can be found on the [Open Library Environment github organization](https://github.com/openlibraryenvironment). Releases for each application are indicated with tags in the git repository. NPM artifacts are published on the following NPM repository: https://repository.dev-us-east-1.indexdata.com/repository/reshare-all/. 
+
+### platform-rs
+The [platform-rs](https://github.com/openlibraryenvironment/platform-rs/tree/v1.0.0) repository contains a complete list of all the software that comprises a ReShare system. There is a branch of the platform for each release that gives the specific versions of each piece of software that make up that release.
+
 ## Requirements
 * Linux OS (this guide uses Ubuntu LTS 20.04, but would work for other distributions with minor adjustments)
 * 8GB Ram
@@ -27,7 +46,8 @@ Install Java 11 and Nginx. Java 11 is the runtime for Okapi, and Nginx will be u
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt-get -y install openjdk-11-jdk nginx postgresql postgresql-client postgresql-contrib libpq-dev
+sudo apt-get -y install openjdk-8-jdk nginx
+sudo update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64
 ```
 
 ### Configure Postgresql
@@ -132,10 +152,12 @@ CREATE DATABASE reshare WITH OWNER reshare;
 ### Install Okapi
 ```
 wget --quiet -O - https://repository.folio.org/packages/debian/folio-apt-archive-key.asc | sudo apt-key add -
-sudo add-apt-repository "deb https://repository.folio.org/packages/ubuntu focal/"
+sudo add-apt-repository "deb https://repository.folio.org/packages/ubuntu xenial/"
 sudo apt update
-sudo apt-get -y install okapi
+sudo apt-get -y install okapi=okapi=3.1.2-1
+sudo apt-mark hold okapi
 ```
+
 #### Configure Okapi
 Edit `/etc/folio/okapi/okapi.conf` to configure Okapi making the following changes:
 * `role="dev"`
