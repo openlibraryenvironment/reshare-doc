@@ -154,7 +154,7 @@ CREATE DATABASE reshare WITH OWNER reshare;
 wget --quiet -O - https://repository.folio.org/packages/debian/folio-apt-archive-key.asc | sudo apt-key add -
 sudo add-apt-repository "deb https://repository.folio.org/packages/ubuntu xenial/"
 sudo apt update
-sudo apt-get -y install okapi=okapi=3.1.2-1
+sudo apt-get -y install okapi=3.1.2-1
 sudo apt-mark hold okapi
 ```
 
