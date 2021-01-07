@@ -47,7 +47,7 @@ Install Java 11 and Nginx. Java 11 is the runtime for Okapi, and Nginx will be u
 sudo apt update
 sudo apt upgrade
 sudo apt-get -y install openjdk-8-jdk nginx
-sudo update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64
+sudo update-java-alternatives --jre-headless --jre --set java-1.8.0-openjdk-amd64 postgres
 ```
 
 ### Configure Postgresql
